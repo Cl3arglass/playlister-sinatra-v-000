@@ -45,7 +45,7 @@ binding.pry
   @song.song_genres.find_or_create_by(genre: @genre)
   @song.save
   flash[:message] = "Successfully updated song."
-  redirect to "/songs/#{@song.slug}"
+  redirect to "/songs/#{params[:slug]}"
 end
 
 # post '/songs/:slug' do
