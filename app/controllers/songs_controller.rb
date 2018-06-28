@@ -37,7 +37,6 @@ get '/songs/:slug/edit' do  #load edit form
 
 patch '/songs/:slug' do #edit action
 # @song = Song.find_by_slug(params[:slug])
-binding.pry
 
   @artist = Artist.find_or_create_by(name: "#{params["artist_name"]}")
   @genre = Genre.find_or_create_by(name: "#{params["genres_name"]}")
