@@ -30,13 +30,14 @@ post '/songs' do
 end
 
 get '/songs/:slug/edit' do  #load edit form
-  binding.pry
+  
     @song = Song.find_by_slug(params[:slug])
     erb :'songs/edit'
   end
 
 patch '/songs/:slug' do #edit action
 # @song = Song.find_by_slug(params[:slug])
+binding.pry
 
   @artist = Artist.find_or_create_by(name: "#{params["artist_name"]}")
   @genre = Genre.find_or_create_by(name: "#{params["genres_name"]}")
