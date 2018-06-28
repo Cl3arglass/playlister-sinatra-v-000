@@ -40,7 +40,7 @@ patch '/songs/:slug' do #edit action
 
   @artist = Artist.find_or_create_by(name: "#{params["artist_name"]}")
   @genre = Genre.find_or_create_by(name: "#{params["genres_name"]}")
-  @song = Song.create(:name => params["song_name"], :artist => @artist)
+  @song = Song.create(:name => params["song_name"], :artist => @artist) Here is the problem
   @song.song_genres.find_or_create_by(genre: @genre)
   @song.save
   flash[:message] = "Successfully updated song."
