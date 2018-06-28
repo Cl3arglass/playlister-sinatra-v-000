@@ -36,11 +36,12 @@ get '/songs/:slug/edit' do  #load edit form
   end
 
 patch '/songs/:slug' do #edit action
-# @song = Song.find_by_slug(params[:slug])
+@song = Song.find_by_slug(params[:slug])
 
   @artist = Artist.find_or_create_by(name: "#{params["artist_name"]}")
   @genre = Genre.find_or_create_by(name: "#{params["genres_name"]}")
-  @song = Song.create(:name => params["song_name"], :artist => @artist) Here is the problem
+  # @song = Song.create(:name => params["song_name"], :artist => @artist) Here is the problem
+  @song.artist = @artist
   @song.song_genres.find_or_create_by(genre: @genre)
   @song.save
   flash[:message] = "Successfully updated song."
